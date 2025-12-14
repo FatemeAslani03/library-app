@@ -1,1 +1,52 @@
-<p>books-page works!</p>
+<button (click)="add()" class="primary">افزودن</button>
+<table>
+  <th>عنوان</th>
+  <th>نویسنده</th>
+  <th>ناشر</th>
+  <th>قیمت</th>
+  <th></th>
+  <tbody>
+      @for (item of data; track $index) {
+            <tr>
+      <td>{{item.title}}</td>
+      <td>{{item.writer}}</td>
+      <td>{{item.publisher}}</td>
+      <td>{{item.price}}</td>
+      <td>
+            <button class="primary">ویرایش</button>
+            <button class="primary">حذف</button>
+      </td>
+    </tr>
+      }
+    <!-- <tr>
+      <td>کیمیاگر</td>
+      <td>پائولو</td>
+      <td>انتشاراتی مجید</td>
+      <td>1000</td>
+      <td>
+            <button class="primary">ویرایش</button>
+            <button class="primary">حذف</button>
+      </td>
+    </tr>
+    <tr>
+      <td>نشخوار ذهنی</td>
+      <td>ایتن کراس</td>
+      <td>سراج بوک</td>
+      <td>10000</td>
+      <td>
+            <button class="primary">ویرایش</button>
+            <button class="primary">حذف</button>
+      </td>
+    </tr>
+    <tr>
+      <td>دختر پرتغالی</td>
+      <td>یوستین</td>
+      <td>یوشیتا</td>
+      <td>10000</td>
+      <td>
+            <button class="primary">ویرایش</button>
+            <button class="primary">حذف</button>
+      </td>
+    </tr> -->
+  </tbody>
+</table>

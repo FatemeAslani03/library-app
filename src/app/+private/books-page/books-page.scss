@@ -1,0 +1,29 @@
+.primary {
+  background-color: rgb(13, 95, 228);
+  color: white;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3em;
+  border: none;
+  margin: 0.1em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  th{
+      background-color: black;
+      color: white;
+      text-align: right;
+  }
+  th , th{
+      padding: 0.2em;
+  }
+}
+
+table th {
+  border-top: 1px solid rgb(145, 145, 145);
+}
+
+table tr {
+  border-bottom: 1px solid rgb(145, 145, 145);
+}
