@@ -1,1 +1,54 @@
-<p>members-page works!</p>
+@if (state=='List') {
+<button (click)="add()" class="primery">افزودن</button>
+<table>
+    <thead>
+        <tr>
+            <th>ردیف</th>
+            <th>نام </th>
+            <th>نام خانوادگی </th>
+            <th>کدملی</th>
+            <th>تلفن</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of data; track $index) {
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.last}}</td>
+            <td>{{item.code}}</td>
+            <td>{{item.phone}}</td>
+            <td>
+                <button class="primery" (click)="Edit(item)">ویرایش</button>
+                <button class="primery" (click)="Remove(item)">حذف</button>
+            </td>
+            <td></td>
+        </tr>
+        }
+    </tbody>
+</table>
+}
+@else {
+<form (ngSubmit)="Save()">
+    <div>
+        <input [(ngModel)]="Item.id" name="id" id="id" type="number" placeholder="ردیف">
+    </div>
+    <div>
+        <input [(ngModel)]="Item.name" name="name" id="name" type="text" placeholder="نام">
+    </div>
+    <div>
+        <input [(ngModel)]="Item.last" name="last" id="last" type="text" placeholder="نام خانوادگی ">
+    </div>
+        <div>
+        <input [(ngModel)]="Item.code" name="code" id="code"  type="number" placeholder="كدملی">
+    </div>
+    <div>
+        <input [(ngModel)]="Item.phone" name="phone" id="phone"  type="te" placeholder="تلفن">
+    </div>
+    <div>
+        <button class="primery" type="submit" >تایید</button>
+        <button class="primery" type="button" (click)="cancel()">انصراف</button>
+    </div>
+</form>
+}

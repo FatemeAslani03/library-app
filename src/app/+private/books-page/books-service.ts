@@ -16,4 +16,19 @@ export class BooksService {
   add(item: BookItem) {
     this.data.push(item);
   }
+  edit(item:BookItem){
+  const index=this.data.findIndex(b=>b.id==item.id);
+  if (index!=-1){
+    this.data[index].title=item.title;
+    this.data[index].writer=item.writer;
+    this.data[index].publisher=item.publisher;
+    this.data[index].price=item.price;
+  }
+
+  }
+    remove(item:BookItem){
+
+  this.data=this.data.filter(b=>b.id!=item.id);
+
+  }
 }

@@ -8,30 +8,43 @@ import { BooksService } from './books-service';
   templateUrl: './books-page.html',
   styleUrl: './books-page.scss',
 })
-export class BooksPage implements OnInit{
-save() {
-  this.BooksService.add(this.item);
-  this.dataRefresh();
-  this.state='list';
-}
+export class BooksPage implements OnInit {
+  save() {
+    if ((this.state = 'add')) {
+      this.BooksService.add(this.item);
+    } else if (this.state == 'edit') {
+      this.BooksService.edit(this.item);
+    }else if (this.state == 'remove') {
+      this.BooksService.remove(this.item);
+    }
+    this.dataRefresh();
+    this.state = 'list';
+  }
   ngOnInit(): void {
     this.dataRefresh();
   }
   data: BookItem[] = [];
-  item:BookItem={
-    id:0,
-    title:'',
-    writer:'',
-    publisher:'',
-    price:0,
-  }
+  item: BookItem = {
+    id: 0,
+    title: '',
+    writer: '',
+    publisher: '',
+    price: 0,
+  };
   BooksService = inject(BooksService);
-  state:string='list';
+  state: string = 'list';
   dataRefresh() {
     this.data = this.BooksService.list();
   }
   add() {
-    this.state='add';
+    this.state = 'add';
+    this.item = {
+      id: 0,
+      title: '',
+      writer: '',
+      publisher: '',
+      price: 0,
+    };
     // this.BooksService.add({
     //   id: 4,
     //   title: ' ازمایش',
@@ -41,8 +54,16 @@ save() {
     // });
     // this.dataRefresh()
   }
-  cancel(){
-this.state='list';
+  edit(books: BookItem) {
+    this.item = { ...books };
+    this.state = 'edit';
+  }
+  remove(books:BookItem){
+    this.item = { ...books };
+    this.state = 'remove';
+  }
+  cancel() {
+    this.state = 'list';
   }
 }
 export interface BookItem {
